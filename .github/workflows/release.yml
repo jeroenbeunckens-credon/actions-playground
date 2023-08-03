@@ -17,4 +17,4 @@ jobs:
           git config --global user.name "Jeroen Beuncken Example"
           git checkout origin/accept
           git pull origin main
-          git push origin/accept
+          git push origin accept
