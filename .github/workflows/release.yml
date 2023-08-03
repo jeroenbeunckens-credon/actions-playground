@@ -19,7 +19,7 @@ jobs:
       
       - name: Check branches
         run: |
-          git branch -b
+          git branch -a
       
       - name: Push changes to accept branch
         run: |
