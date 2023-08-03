@@ -9,10 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          ref: accept
+      - uses: actions/checkout@v3
+      - run: |
+          git branch -a
         
       - name: Set config
         run: |
