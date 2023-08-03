@@ -1,0 +1,41 @@
+name: Merge Release to Branch
+on: 
+ release:
+   types: [published]
+
+jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      
+      - name: create PR to accept branch
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create --base accept --head main --title "release ${{ github.ref_name }}" --body "release creation, automated pr"     
+
+      #- name: comment PR for accept branch
+      #  env:
+      #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #  run: |
+      #    gh pr review main --comment --body "release ${{ github.ref_name }}" 
+
+      #- name: review & approve PR for accept branch
+      #  env:
+      #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #  run: |
+      #    gh pr review main --approve   
+
+      #- name: merge PR for accept branch
+      #  env:
+      #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #  run: |
+      #    gh pr merge main --merge --admin
+      
+      #- name: Merge release to accept
+      #  uses: devmasx/merge-branch@master
+      #  with:
+      #    type: now
+      #    target_branch: accept
+      #    github_token: ${{ secrets.GITHUB_TOKEN }}
