@@ -1,7 +1,8 @@
 name: Merge Release to Branch
 on: 
- release:
-   types: [published]
+ #release:
+ #  types: [published]
+ workflow_dispatch:
 
 jobs:
   merge-branch:
