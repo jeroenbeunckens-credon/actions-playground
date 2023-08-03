@@ -11,11 +11,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Push changes to accept branch
+        
+      - name: Set config
         run: |
           git config --global user.email "jeroen.beunckens@credon.eu.example"
           git config --global user.name "Jeroen Beuncken Example"
+      
+      - name: Check branches
+        run: |
           git branch -b
+      
+      - name: Push changes to accept branch
+        run: |
           git checkout -b accept
           git pull main
           git push origin accept
