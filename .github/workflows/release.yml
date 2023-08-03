@@ -15,6 +15,7 @@ jobs:
         run: |
           git config --global user.email "jeroen.beunckens@credon.eu.example"
           git config --global user.name "Jeroen Beuncken Example"
+          git branch -b
           git checkout -b accept
           git pull main
           git push origin accept
