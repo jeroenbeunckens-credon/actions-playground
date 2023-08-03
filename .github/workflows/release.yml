@@ -15,8 +15,8 @@ jobs:
       - name: Pull current branch to accept branch
         run: git pull origin ${{ github.head_ref }} 
       - name: Push changes to accept branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          git config --global user.email "jeroen.beunckens@credon.eu.example"
+          git config --global user.name "Jeroen Beuncken Example"
           git commit -am "Pull changes from current branch"
           git push origin accept-branch
