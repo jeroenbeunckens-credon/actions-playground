@@ -13,4 +13,10 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Pull current branch to accept branch
-        run: git pull origin ${{ github.head_ref }} && git push
+        run: git pull origin ${{ github.head_ref }} 
+      - name: Push changes to accept branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git commit -am "Pull changes from current branch"
+          git push origin accept-branch
