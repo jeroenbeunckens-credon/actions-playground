@@ -24,5 +24,6 @@ jobs:
       
       - name: Push changes to accept branch
         run: |
-          git pull main
+          git checkout -b accept
+          git pull origin main
           git push origin accept
