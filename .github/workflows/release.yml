@@ -11,12 +11,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
-      - name: Pull current branch to accept branch
-        run: git pull origin ${{ github.head_ref }} 
       - name: Push changes to accept branch
         run: |
           git config --global user.email "jeroen.beunckens@credon.eu.example"
           git config --global user.name "Jeroen Beuncken Example"
-          git commit -am "Pull changes from current branch"
-          git push origin accept-branch
+          git checkout -b release-branch
+          git pull origin
+          git push origin accept
